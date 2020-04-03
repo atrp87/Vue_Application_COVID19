@@ -1,28 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div>
+       <h1>COVID-19</h1>
+      <covids-list :covids='covids'></covids-list>
   </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import { eventBus } from "@/main.js";
+
+import CovidsList from './components/CovidsList.vue';
 
 export default {
-  name: 'App',
+  name: 'app',
+  data(){
+    return {
+      covids: [],
+      selectedCovid: null
+    };
+  },
+  mounted(){
+    fetch('https://api.covid19api.com/summary')
+    .then(res => res.json())
+    .then(covids => this.covids = covids)
+  },
+
   components: {
-    HelloWorld
+    "covids-list": CovidsList,
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
