@@ -1,15 +1,20 @@
 <template lang="html">
-<li>{{ country.country}}</li>
+<li>{{ country.Country }}</li>
+
 </template>
 
 <script>
 
-import { eventBus } from '../main.js'
+import CovidSelect from './CovidSelect.vue';
 
 export default {
   name: 'list-covid',
-  props: ['country']
+  props: ['country'],
+  components: {
+    'covid-select': CovidSelect
+  }
 }
+ 
 </script>
 
 <style lang="css" scoped>
