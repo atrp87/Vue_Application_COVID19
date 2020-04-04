@@ -1,6 +1,8 @@
+  
 <template>
     <div>
       <covids-list :covids='covids'></covids-list>
+      <covid-detail :covid='covidSelect'></covid-detail>
   </div>
 
 </template>
@@ -8,16 +10,18 @@
 <script>
 
 import { eventBus } from "@/main.js";
-
 import CovidsList from './components/CovidsList.vue';
 import CovidDetail from './components/CovidDetail.vue'
+import ListCovid from './components/ListCovid.vue';
+import CovidSelect from './components/CovidSelect.vue';
 
 export default {
   name: 'app',
   data(){
     return {
     covids: [],
-    selectedCovid: null
+    trackCountry: [],
+    covidSelect: null
      };
   },
   mounted(){
@@ -28,16 +32,14 @@ export default {
     eventBus.$on ('covid-select', (covid) => {
       this.covidSelect = covid;
     })
-
   },
   components: {
     "covids-list": CovidsList,
-    'covid-detail': CovidDetail,
+    "covid-detail": CovidDetail,
+
   }
 }
-
 </script>
 
 <style>
-
 </style>

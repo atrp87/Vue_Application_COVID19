@@ -4,6 +4,7 @@
         <p>{{ covid.TotalConfirmed }}</p>
         <p>{{ covid.TotalDeaths}}</p>
         <p>{{ covid.TotalRecovered}}</p>
+        <button v-if="!trackCovids.includes(covid)" v-on:click="addToTrack">Track Country</button>
     </div>
 </template>
 
@@ -13,11 +14,15 @@ import { eventBus } from '../main.js';
 
 export default {
     name: 'covid-detail',
-    props: ['covid']
+    props: ['covid', 'trackCovids'],
 
+    methods: {
+    addToTrack: function() {
+        eventBus.$emit('track-covid', this.covid)
+    }
+    }
 }
 </script>
 
 <style lang="stylus" scoped>
-
 </style>

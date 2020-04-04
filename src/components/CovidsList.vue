@@ -8,16 +8,15 @@
 </template>
 
 <script>
+
 import ListCovid from './ListCovid.vue';
 import CovidSelect from './CovidSelect.vue';
 
 export default {
   name: 'covid-list',
   props: ['covids'],
-
   components: {
     "list-covid": ListCovid,
-    "covid-select": CovidSelect
   }
 }
 </script>
