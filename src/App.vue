@@ -14,13 +14,14 @@ import CovidsList from './components/CovidsList.vue';
 import CovidDetail from './components/CovidDetail.vue'
 import ListCovid from './components/ListCovid.vue';
 import CovidSelect from './components/CovidSelect.vue';
+// import TrackCountry from './components/CovidCountry.vue';
 
 export default {
   name: 'app',
   data(){
     return {
     covids: [],
-    trackCountry: [],
+    trackedCountry: [],
     covidSelect: null
      };
   },
@@ -32,10 +33,23 @@ export default {
     eventBus.$on ('covid-select', (covid) => {
       this.covidSelect = covid;
     })
+    eventBus.$on ('tracked-country', (covid)=> {
+      this.trackCountry.push(covid);
+    })
+    eventBus.$on ('remove-track', (tCovids)=> {
+      const index = this.trackCountry.indexOf(tCovids)
+      console.log(index);
+      
+      console.log(index);
+      
+      this.trackCountry.remove(tCovids)
+    })
   },
+
   components: {
     "covids-list": CovidsList,
     "covid-detail": CovidDetail,
+    "list-covid": ListCovid
 
   }
 }
