@@ -8,10 +8,10 @@
         :key="index"
       >{{country.Country}}</covid-selected>-->
       <covid-selected
-        v-for="(country, index) in covids"
+        v-for="(country, index) in country"
         :country="country"
         :key="index"
-      >{{country.Country}}</covid-selected>
+      >{{country.Countries}}</covid-selected>
       <!-- <covid-list
         v-for="(country, index) in country.covids"
         :country="country"
@@ -28,7 +28,7 @@ export default {
   name: "covid-list",
   props: ["country"],
   components: {
-    "covid-selected": CovidSelected
+    "covid-selected": CovidSelected,
   }
 };
 </script>
